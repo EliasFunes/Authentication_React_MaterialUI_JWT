@@ -4,7 +4,8 @@
   "description": "Tutorial to authenticate users",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bundle": "webpack --mode development --config ./webpack.config.js/ --watch",
+    "start": "parallelshell \"npm run bundle\" \"nodemon --use_strict index.js\""
   },
   "author": "EliasFunes",
   "license": "ISC",
@@ -24,6 +25,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "nodemon": "^1.17.1",
-    "webpack": "^4.1.1"
+    "parallelshell": "^3.0.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
   }
 }
