@@ -11,3 +11,5 @@ const port = 3000;
 app.listen(port, () => {
 	console.log(`Listening at http://localhost:${port}`)
 })
+
+//REFERENCES FROM => https://vladimirponomarev.com/blog/authentication-in-react-apps-creating-components
