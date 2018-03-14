@@ -4,7 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
-import routes from './routes.js';
+
 
 import Base from './components/Base.jsx';
 
@@ -16,16 +16,10 @@ const render = ReactDom.render;
 render(
 	(
 		<MuiThemeProvider muiTheme={getMuiTheme()}>
-			<Router>  
-				<Base routes={routes} />
-			</Router>
+			<Router> 
+				<Base/>	
+			</Router>  
 		</MuiThemeProvider>
 	), document.getElementById('react-app')
 );
-
-
-/*<Router 
-				history={browserHistory} 
-				routes={routes}
-			/>*/
 

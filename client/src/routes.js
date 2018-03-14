@@ -4,7 +4,6 @@ import LoginPage from './containers/LoginPage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 
 const routes = {
-	component: Base,
 	childRoutes:[
 		{
 			path:'/',
