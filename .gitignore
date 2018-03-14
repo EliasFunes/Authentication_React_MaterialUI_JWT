@@ -1,4 +1,5 @@
 ## .gitignore
 build
+client/dist
 node_modules
 .idea/
