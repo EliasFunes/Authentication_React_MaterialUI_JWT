@@ -4,12 +4,16 @@ import { Link, NavLink } from 'react-router-dom';
 import {
     BrowserRouter as Router,
     Route,
-    Switch
+    Switch,
+    Redirect
 } from 'react-router-dom';
 
 import HomePage from './HomePage.jsx';
+import DashboardPage from '../containers/DashboardPage.jsx';
 import LoginPage from '../containers/LoginPage.jsx';
 import SignUpPage from '../containers/SignUpPage.jsx';
+
+import Auth from '../modules/Auth';
 
 const Base = () => (
 	<div>
@@ -17,16 +21,35 @@ const Base = () => (
 			<div className="top-bar-left">
 				<NavLink to="/">React App</NavLink>
 			</div>
-			<div className="top-bar-right">
-				<Link to="/login">Log in</Link>
-				<Link to="/signup">Sign up</Link>
-			</div>
+
+			{Auth.isUserAuthenticated() ? (
+				<div className="top-bar-right">
+					<Link to="/logout">Log out</Link>
+				</div>
+			) : (
+				<div className="top-bar-right">
+					<Link to="/login">Log in</Link>
+					<Link to="/signup">Sign up</Link>
+				</div>
+			)}
+
 		</div>
 
 			<Switch>
-                <Route path="/" exact component={HomePage}/>
+				{Auth.isUserAuthenticated() ? (
+					<Route path="/" exact component={DashboardPage}/>
+				) : (
+					<Route path="/" exact component={HomePage}/>
+				)}
+                
                 <Route path="/login" exact component={LoginPage}/>
                 <Route path="/signup" exact component={SignUpPage}/>
+
+                <Route path="/logout" exact render={() => {
+                	Auth.deauthenticateUser();
+                	return (<Redirect to="/" />);	
+                }} />
+
             </Switch>
 
 	</div>

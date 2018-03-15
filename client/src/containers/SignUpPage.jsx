@@ -6,8 +6,8 @@ import SignUpForm from '../components/SignUpForm.jsx';
 class SignUpPage extends React.Component {
 
 	//Class constructor
-	constructor(props){
-		super(props);
+	constructor(props, context){
+		super(props, context);
 
 		// set the inicial component state
 		this.state = {
@@ -67,6 +67,13 @@ class SignUpPage extends React.Component {
 				this.setState({
 					errors:{}
 				});
+
+				//set a message
+				localStorage.setItem('successMessage', xhr.response.message);
+
+				//make a redirect
+				//this.context.router.replace('/login');
+				this.context.router.history.push('/login');
 			}else{
 				//failure
 				const errors = xhr.response.errors ? xhr.response.errors : {};
@@ -94,6 +101,10 @@ class SignUpPage extends React.Component {
 		);
 	}
 
+}
+
+SignUpPage.contextTypes = {
+	router: PropTypes.object.isRequired
 }
 
 export default SignUpPage;
