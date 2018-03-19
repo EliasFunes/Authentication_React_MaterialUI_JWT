@@ -35,6 +35,9 @@ const apiRoutes = require('./server/routes/api');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
+const router = require('./server/routes/router');
+app.use("*", router);
+
 const port = 3000;
 app.listen(port, () => {
 	console.log(`Listening at http://localhost:${port}`)

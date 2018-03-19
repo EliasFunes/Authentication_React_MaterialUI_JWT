@@ -20,7 +20,15 @@ module.exports = {
 				options:{
 					presets:['es2015', 'react']
 				}	
-			}
+			},
+            {
+                test: /\.js?$/,
+                include:path.join(__dirname, '/server'),
+                loader:'babel-loader',
+                options:{
+                    presets:['es2015']
+                }
+            }
 		]
 	}
 }
