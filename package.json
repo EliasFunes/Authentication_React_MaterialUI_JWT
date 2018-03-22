@@ -4,8 +4,9 @@
   "description": "Tutorial to authenticate users",
   "main": "index.js",
   "scripts": {
+    "build:watch":"babel ./app -d build --watch",
     "bundle": "webpack --mode development --config ./webpack.config.js/ --watch",
-    "start": "parallelshell \"npm run bundle\" \"nodemon --use_strict index.js\""
+    "start": "parallelshell \"npm run build:watch\" \"npm run bundle\" \"nodemon --use_strict ./build/server/index.js\""
   },
   "author": "EliasFunes",
   "license": "ISC",
