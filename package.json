@@ -4,7 +4,7 @@
   "description": "Tutorial to authenticate users",
   "main": "index.js",
   "scripts": {
-    "build:watch":"babel ./app -d build --watch",
+    "build:watch": "babel ./app -d build --watch",
     "bundle": "webpack --mode development --config ./webpack.config.js/ --watch",
     "start": "parallelshell \"npm run build:watch\" \"npm run bundle\" \"nodemon --use_strict ./build/server/index.js\""
   },
@@ -30,6 +30,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.1.0",
     "nodemon": "^1.17.1",
     "parallelshell": "^3.0.2",
     "webpack": "^4.1.1",

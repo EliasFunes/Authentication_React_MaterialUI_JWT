@@ -1,13 +1,15 @@
 const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	//the entry file for the bundle
-	entry:path.join(__dirname, '/app/client/src/app.js'),
+    devtool: "source-map",
+    //the entry file for the bundle
+    entry:path.join(__dirname, '/app/client/app.js'),
 
 	//the bundle file we will get in the result
 	output:{
-		path:path.join(__dirname, '/app/client/dist/js'),
-		filename:'app.js'
+		path:path.join(__dirname, 'build'),
+		filename:'bundle.js'
 	},
 
 	module: {
@@ -16,12 +18,20 @@ module.exports = {
 			{
 				// test: /\.jsx?$/,
                 test:/.js$/,
-				include:path.join(__dirname, '/app/client/src'),
-				loader:'babel-loader',
-				options:{
+                loader:'babel-loader',
+                include:path.join(__dirname, 'app'),
+                exclude: /node_modules/,
+                options:{
 					presets:['es2015', 'react']
 				}	
 			}
 		]
-	}
+	},
+    plugins: [
+        new HtmlWebpackPlugin({
+            template:'./app/server/static/index.html',
+            filename:'index.html',
+            inject:'body'
+        })
+    ]
 }

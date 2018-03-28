@@ -7,19 +7,24 @@ class Auth {
    */
 
    static authenticateUser(token) {
-   	localStorage.setItem('token', token);
+        localStorage.setItem('token', token);
    }
 
 
-  /**
+    /**
    * Check if a user is authenticated - check if a token is saved in Local Storage
    *
    * @returns {boolean}
    */
 
    static isUserAuthenticated() {
-   	return localStorage.getItem('token') !== null;
+      if(typeof localStorage == "undefined"){
+            return false;
+      }else{
+            return localStorage.getItem('token') !== null;
+      }
    }
+
 
 
   /**

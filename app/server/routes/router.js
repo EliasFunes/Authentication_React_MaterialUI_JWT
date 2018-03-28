@@ -10,7 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import renderFullPage from '../renderFullPage';
 
-import Base from '../../client/src/components/Base';
+import Base from '../../client/components/Base';
 
 const express = require('express');
 const router = express.Router();

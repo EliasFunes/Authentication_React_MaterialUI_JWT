@@ -8,8 +8,8 @@ export default function (html) {
                 <link rel="stylesheet" type="text/css" href="/css/style.css">
         </head>
         <body>
-        <div id="react-app">{html}</div>
-        <script src="/js/app.js"></script>
+        <div id="react-app">${html}</div>
+        <script src="bundle.js"></script>
         </body>
         </html>`;
 }
