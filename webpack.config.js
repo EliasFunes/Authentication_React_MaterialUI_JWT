@@ -1,30 +1,26 @@
-const path = require('path');
+var path = require('path');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devtool: "source-map",
-    //the entry file for the bundle
-    entry:path.join(__dirname, '/app/client/app.js'),
-
-	//the bundle file we will get in the result
+    entry: ['./app/client/index.js'],
 	output:{
-		path:path.join(__dirname, 'build'),
-		filename:'bundle.js'
+        path: path.join(__dirname, 'build'),
+        filename: "bundle.js"
 	},
 
 	module: {
-		//apply loaders to files that meet given conditions
 		rules: [
-			{
-				// test: /\.jsx?$/,
+            {
                 test:/.js$/,
-                loader:'babel-loader',
-                include:path.join(__dirname, 'app'),
-                exclude: /node_modules/,
-                options:{
-					presets:['es2015', 'react']
-				}	
-			}
+                loader: "babel-loader",
+                include: path.join(__dirname, 'app'),
+                exclude:/node_modules/,
+                options: {
+                    presets: ['es2015','react']
+                }
+            }
 		]
 	},
     plugins: [

@@ -15,44 +15,88 @@ import SignUpPage from '../containers/SignUpPage';
 
 import Auth from '../modules/Auth';
 
-const Base = () => (
-    <div>
-        <div className="top-bar">
-            <div className="top-bar-left">
-                <NavLink to="/">React App</NavLink>
+export default function Base(){
+    return(
+        <div>
+            <div className="top-bar">
+                <div className="top-bar-left">
+                    <NavLink to="/">React App</NavLink>
+                </div>
+
+                {Auth.isUserAuthenticated() ? (
+                    <div className="top-bar-right">
+                        <Link to="/logout">Log out</Link>
+                    </div>
+                ) : (
+                    <div className="top-bar-right">
+                        <Link to="/login">Log in</Link>
+                        <Link to="/signup">Sign up</Link>
+                    </div>
+                )}
+
             </div>
 
-            {Auth.isUserAuthenticated() ? (
-                <div className="top-bar-right">
-                    <Link to="/logout">Log out</Link>
-                </div>
-            ) : (
-                <div className="top-bar-right">
-                    <Link to="/login">Log in</Link>
-                    <Link to="/signup">Sign up</Link>
-                </div>
-            )}
+            <Switch>
+                {Auth.isUserAuthenticated() ? (
+                    <Route path="/" exact component={DashboardPage}/>
+                ) : (
+                    <Route path="/" exact component={HomePage}/>
+                )}
+
+                <Route path="/login" exact component={LoginPage}/>
+                <Route path="/signup" exact component={SignUpPage}/>
+
+                <Route path="/logout" exact render={() => {
+                    Auth.deauthenticateUser();
+                    return (<Redirect to="/" />);
+                }} />
+
+            </Switch>
 
         </div>
+    );
+}
 
-        <Switch>
-            {Auth.isUserAuthenticated() ? (
-                <Route path="/" exact component={DashboardPage}/>
-            ) : (
-                <Route path="/" exact component={HomePage}/>
-            )}
 
-            <Route path="/login" exact component={LoginPage}/>
-            <Route path="/signup" exact component={SignUpPage}/>
 
-            <Route path="/logout" exact render={() => {
-                Auth.deauthenticateUser();
-                return (<Redirect to="/" />);
-            }} />
+// const Base = () => (
+//     <div>
+//         <div className="top-bar">
+//             <div className="top-bar-left">
+//                 <NavLink to="/">React App</NavLink>
+//             </div>
+//
+//             {Auth.isUserAuthenticated() ? (
+//                 <div className="top-bar-right">
+//                     <Link to="/logout">Log out</Link>
+//                 </div>
+//             ) : (
+//                 <div className="top-bar-right">
+//                     <Link to="/login">Log in</Link>
+//                     <Link to="/signup">Sign up</Link>
+//                 </div>
+//             )}
+//
+//         </div>
+//
+//         <Switch>
+//             {Auth.isUserAuthenticated() ? (
+//                 <Route path="/" exact component={DashboardPage}/>
+//             ) : (
+//                 <Route path="/" exact component={HomePage}/>
+//             )}
+//
+//             <Route path="/login" exact component={LoginPage}/>
+//             <Route path="/signup" exact component={SignUpPage}/>
+//
+//             <Route path="/logout" exact render={() => {
+//                 Auth.deauthenticateUser();
+//                 return (<Redirect to="/" />);
+//             }} />
+//
+//         </Switch>
+//
+//     </div>
+// );
 
-        </Switch>
-
-    </div>
-);
-
-export default Base;
+// export default Base;

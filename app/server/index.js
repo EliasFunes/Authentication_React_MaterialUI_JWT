@@ -15,8 +15,11 @@ const app = express();
 // app.use(express.static('../server/static/'));
 // app.use(express.static('../client/dist/'));
 
-const assets = express.static(path.join(__dirname, '../static/'));
+const assets = express.static(path.join(__dirname, '../'));
+const estatico = express.static(path.join(__dirname, '../../app/server/static/'));
+
 app.use(assets);
+app.use(estatico);
 
 //tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended:false }));
@@ -40,8 +43,9 @@ const apiRoutes = require('./routes/api');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
-const router = require('./routes/router');
-app.use("*", router);
+
+import router from './routes/router';
+app.get("*", router);
 
 const port = 3000;
 app.listen(port, () => {
