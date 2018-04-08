@@ -13,38 +13,6 @@ import renderFullPage from '../renderFullPage';
 import Base from '../../client/components/Base';
 
 const express = require('express');
-// const router = express.Router();
-
-// router.get('*', (req, res) => {
-//     const match = routes.reduce((acc, route) => matchPath(req.url, {path:route, exact:true}) || acc, null);
-//     if(!match){
-//         res.status(404).send('the page not found');
-//     }else{
-//
-//
-//         const context = {};
-//
-//         global.navigator = {
-//             userAgent: req.headers['user-agent']
-//         };
-//         const muiTheme = getMuiTheme({userAgent: req.headers['user-agent']});
-//
-//         // injectTapEventPlugin();
-//
-//
-//
-//         const html = renderToString(
-//
-//             <MuiThemeProvider muiTheme={muiTheme}>
-//                 <StaticRouter context={context} location={req.url}>
-//                     <Base/>
-//                 </StaticRouter>
-//             </MuiThemeProvider>
-//         )
-//
-//         res.status(200).send(renderFullPage(html));
-//     }
-// });
 
 export default function router(req, res) {
 
@@ -71,5 +39,3 @@ export default function router(req, res) {
     res.status(200).send(renderFullPage(html));
 
 }
-
-// module.exports = router;
