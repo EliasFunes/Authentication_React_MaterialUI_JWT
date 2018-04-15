@@ -1,9 +1,16 @@
 import React from 'react';
-import { Card, CardTitle } from 'material-ui/Card';
+import  Card, { CardContent, CardHeader } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
 
 const HomePage = () => (
     <Card className="container">
-        <CardTitle title="React Application" subtitle="This is the Home Page."/>
+        <CardHeader title="React Application">
+        </CardHeader>
+        <CardContent>
+            <Typography>
+                This is the home Page.
+            </Typography>
+        </CardContent>
     </Card>
 );
 

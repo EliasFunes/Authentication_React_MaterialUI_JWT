@@ -15,7 +15,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.0",
-    "material-ui": "^0.20.0",
+    "material-ui": "^1.0.0-beta.41",
     "mongoose": "^5.0.10",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
