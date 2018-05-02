@@ -25,6 +25,7 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 
 import TextField from 'material-ui/TextField';
+import Dashboard from "./Dashboard";
 
 const styles = theme => ({
     flex: {
@@ -88,22 +89,30 @@ function Base(props){
     // );
     const { classes } = props;
     return(
-        <Grid container spacing={0} justify="center" alignItems="center">
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="title" color="inherit" className={classes.flex}>
-                        React Material UI example
-                    </Typography>
-
-                    <LoginPage/>
-                </Toolbar>
-            </AppBar>
-            <Grid item lg={6}>
-            </Grid>
-            <Grid item lg={6} container justify="center" alignItems="center" direction="column">
-                <SignUpPage/>
-            </Grid>
-        </Grid>
+           <Grid container spacing={0} justify="center" alignItems="center">
+                 <AppBar position="static">
+                     <Toolbar>
+                         <Typography variant="title" color="inherit" className={classes.flex}>
+                             React Material UI example
+                         </Typography>
+                         {Auth.isUserAuthenticated() ? (
+                             <NavLink to="/logout">Log out</NavLink>
+                         ): (
+                             <LoginPage/>
+                         )}
+                     </Toolbar>
+                 </AppBar>
+                 {Auth.isUserAuthenticated() ? (
+                     <Grid item lg={12}>
+                         <DashboardPage/>
+                     </Grid>
+                     ): (
+                     //<Grid item lg={6}></Grid>
+                     <Grid item lg={6} container justify="center" alignItems="center" direction="column">
+                     <SignUpPage/>
+                     </Grid>
+                 )}
+             </Grid>
     );
 
 }
