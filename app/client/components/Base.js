@@ -107,9 +107,11 @@ function Base(props){
                          <DashboardPage/>
                      </Grid>
                      ): (
-                     //<Grid item lg={6}></Grid>
-                     <Grid item lg={6} container justify="center" alignItems="center" direction="column">
-                     <SignUpPage/>
+                     <Grid container>
+                         <Grid item lg={6}></Grid>
+                         <Grid item lg={6} container justify="center" alignItems="center" direction="column">
+                             <SignUpPage/>
+                         </Grid>
                      </Grid>
                  )}
              </Grid>
